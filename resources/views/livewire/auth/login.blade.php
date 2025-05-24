@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-6">
-    <x-auth-header :title="__('ورود به حساب تان ')" :description="__('برای ورود ایمیل و تأیید رمز عبور تان را زیر تایپ کنید')" />
+    <x-auth-header :title="__('ریاست مخابرات و تکنالوژی معلوماتی  غور')" :description="__('برای ورود ایمیل و تأیید رمز عبور تان را زیر تایپ کنید')" />
 
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />

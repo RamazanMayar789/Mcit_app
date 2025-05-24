@@ -22,6 +22,12 @@
                 <flux:navlist.group :heading="__('')" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')"
                     :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('داشبورد') }}</flux:navlist.item>
+                    <flux:navlist.item :href="route('admin.students')" :current="request()->routeIs('admin.students')" wire:navigate>
+                        <div class="flex items-center gap-2">
+                            <flux:icon name="book-open-text" class="w-5 h-5 text-pink-600 dark:text-pink-300" />
+                            <span>{{ __('شاگردان') }}</span>
+                        </div>
+                    </flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

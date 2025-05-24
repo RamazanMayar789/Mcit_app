@@ -18,7 +18,7 @@
 
         <!-- Email Address -->
         <flux:input
-            wire:model="ایمیل"
+            wire:model="email"
             :label="__('ایمیل آدرس ')"
             type="email"
             required
