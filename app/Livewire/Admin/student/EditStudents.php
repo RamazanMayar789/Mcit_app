@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\student;
 
 use App\Models\student;
 use Flux\Flux;
@@ -21,10 +21,10 @@ class EditStudents extends Component
     #[Validate('regex:/^[\p{L} ]+$/u', message: 'فقط حروف مجاز است')]
 
     public $last_name;
-    #[Validate('required',message:'فیلد نام الزامی است')]
-    #[Validate('min:3',message:'حداقل 3 کاراکتر')]
-    #[Validate('max:20',message:'حداکثر 20 کاراکتر')]
-    #[Validate('regex:/^[\p{L} ]+$/u',message:'فقط حروف مجاز است')]
+    #[Validate('required', message: 'فیلد نام الزامی است')]
+    #[Validate('min:3', message: 'حداقل 3 کاراکتر')]
+    #[Validate('max:20', message: 'حداکثر 20 کاراکتر')]
+    #[Validate('regex:/^[اآبپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی‌ ]+$/u', message: 'فقط حروف فارسی باشد ')]
 
     public $name;
     #[Validate('required', message: 'فیلد نام پدر الزامی است')]
@@ -32,9 +32,9 @@ class EditStudents extends Component
     #[Validate('max:20', message: 'حداکثر 20 کاراکتر')]
     #[Validate('regex:/^[\p{L} ]+$/u', message: 'فقط حروف مجاز است')]
     public $fname;
-    #[Validate('required',message:'فیلد نام پدر کلان الزامی است')]
-    #[Validate('min:3',message:'حداقل 3 کاراکتر')]
-    #[Validate('max:20',message:'حداکثر 20 کاراکتر')]
+    #[Validate('required', message: 'فیلد نام پدر کلان الزامی است')]
+    #[Validate('min:3', message: 'حداقل 3 کاراکتر')]
+    #[Validate('max:20', message: 'حداکثر 20 کاراکتر')]
     #[Validate('regex:/^[\p{L} ]+$/u', message: 'فقط حروف مجاز است')]
     public $gname;
     #[Validate('required', message: 'لطفا وطیفه شاگرد را بنوسید')]
@@ -50,7 +50,7 @@ class EditStudents extends Component
 
     public $image;
     #[Validate('required', message: 'فیلد شماره تلیفون الزامی است')]
-    #[Validate('regex:/^07[0-9]{8}$/',message:'شماره تلیفون نامعتبر است')]
+    #[Validate('regex:/^07[0-9]{8}$/', message: 'شماره تلیفون نامعتبر است')]
     #[Validate('min:9', message: 'حداقل 9 کاراکتر')]
     #[Validate('unique:students,phone_number', message: 'این شماره تلیفون قبلا ثبت شده است')]
 
@@ -68,23 +68,24 @@ class EditStudents extends Component
 
     public $province;
 
-public $studentId;
+    public $studentId;
     #[On('edit_student')]
 
-    public function edit($id){
+    public function edit($id)
+    {
 
-        $students=student::findOrFail($id);
+        $students = student::findOrFail($id);
 
-        $this->studentId=$id;
-        $this->name=$students->name;
-        $this->last_name=$students->last_name;
-        $this->fname=$students->fname;
-        $this->gname=$students->GFname;
-        $this->job=$students->job;
-        $this->image=$students->image;
-        $this->phone_number=$students->phone_number;
-        $this->Id_cart=$students->ID_Cart;
-        $this->province=$students->province;
+        $this->studentId = $id;
+        $this->name = $students->name;
+        $this->last_name = $students->last_name;
+        $this->fname = $students->fname;
+        $this->gname = $students->GFname;
+        $this->job = $students->job;
+        $this->image = $students->image;
+        $this->phone_number = $students->phone_number;
+        $this->Id_cart = $students->ID_Cart;
+        $this->province = $students->province;
         Flux::modal('edit-student')->show();
 
 
@@ -128,7 +129,7 @@ public $studentId;
             'phone_number' => $this->phone_number,
             'ID_Cart' => $idCartName,
             'province' => $this->province,
-            'user_id'=>Auth::user()->id
+            'user_id' => Auth::user()->id
         ]);
 
         Flux::modal('edit-student')->close();
@@ -139,6 +140,6 @@ public $studentId;
 
     public function render()
     {
-        return view('livewire.admin.edit-students');
+        return view('livewire.admin.student.edit-students');
     }
 }

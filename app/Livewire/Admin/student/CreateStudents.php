@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\student;
 
 use Flux\Flux;
 use Livewire\Attributes\Validate;
@@ -16,16 +16,16 @@ class CreateStudents extends Component
 
 
 
-    #[Validate('required',message:'فیلد نام الزامی است')]
-    #[Validate('min:3',message:'حداقل 3 کاراکتر')]
-    #[Validate('max:20',message:'حداکثر 20 کاراکتر')]
-    #[Validate('regex:/^[\p{L} ]+$/u',message:'فقط حروف مجاز است')]
+    #[Validate('required', message: 'فیلد نام الزامی است')]
+    #[Validate('min:3', message: 'حداقل 3 کاراکتر')]
+    #[Validate('max:20', message: 'حداکثر 20 کاراکتر')]
+    #[Validate('regex:/^[اآبپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی‌ ]+$/u', message: 'فقط حروف فارسی باشد ')]
 
     public $last_name;
-    #[Validate('required',message:'فیلد نام الزامی است')]
-    #[Validate('min:3',message:'حداقل 3 کاراکتر')]
-    #[Validate('max:20',message:'حداکثر 20 کاراکتر')]
-    #[Validate('regex:/^[\p{L} ]+$/u',message:'فقط حروف مجاز است')]
+    #[Validate('required', message: 'فیلد نام الزامی است')]
+    #[Validate('min:3', message: 'حداقل 3 کاراکتر')]
+    #[Validate('max:20', message: 'حداکثر 20 کاراکتر')]
+    #[Validate('regex:/^[اآبپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی‌ ]+$/u', message: 'فقط حروف فارسی باشد ')]
 
     public $name;
     #[Validate('required', message: 'فیلد نام پدر الزامی است')]
@@ -33,9 +33,9 @@ class CreateStudents extends Component
     #[Validate('max:20', message: 'حداکثر 20 کاراکتر')]
     #[Validate('regex:/^[\p{L} ]+$/u', message: 'فقط حروف مجاز است')]
     public $fname;
-    #[Validate('required',message:'فیلد نام پدر کلان الزامی است')]
-    #[Validate('min:3',message:'حداقل 3 کاراکتر')]
-    #[Validate('max:20',message:'حداکثر 20 کاراکتر')]
+    #[Validate('required', message: 'فیلد نام پدر کلان الزامی است')]
+    #[Validate('min:3', message: 'حداقل 3 کاراکتر')]
+    #[Validate('max:20', message: 'حداکثر 20 کاراکتر')]
     #[Validate('regex:/^[\p{L} ]+$/u', message: 'فقط حروف مجاز است')]
     public $gname;
     #[Validate('required', message: 'لطفا وطیفه شاگرد را بنوسید')]
@@ -51,7 +51,7 @@ class CreateStudents extends Component
 
     public $image;
     #[Validate('required', message: 'فیلد شماره تلیفون الزامی است')]
-    #[Validate('regex:/^07[0-9]{8}$/',message:'شماره تلیفون نامعتبر است')]
+    #[Validate('regex:/^07[0-9]{8}$/', message: 'شماره تلیفون نامعتبر است')]
     #[Validate('min:9', message: 'حداقل 9 کاراکتر')]
     #[Validate('unique:students,phone_number', message: 'این شماره تلیفون قبلا ثبت شده است')]
 
@@ -71,7 +71,8 @@ class CreateStudents extends Component
     public $province;
 
 
-    public function save(){
+    public function save()
+    {
 
         $this->validate();
 
@@ -96,16 +97,16 @@ class CreateStudents extends Component
             'phone_number' => $this->phone_number,
             'ID_Cart' => $idCartName,
             'province' => $this->province,
-            'last_name'=>$this->last_name,
-            'user_id'=>Auth::user()->id
+            'last_name' => $this->last_name,
+            'user_id' => Auth::user()->id
         ]);
-        $this->reset('name', 'fname', 'gname', 'job', 'image', 'phone_number', 'Id_cart', 'province','last_name');
+        $this->reset('name', 'fname', 'gname', 'job', 'image', 'phone_number', 'Id_cart', 'province', 'last_name');
         Flux::modal('create_student')->close();
 
 
-session()->flash('success', 'شاگرد جدید با موفقیت اضافه شد');
+        session()->flash('success', 'شاگرد جدید با موفقیت اضافه شد');
 
-        $this->redirectRoute('admin.students',navigate:true);
+        $this->redirectRoute('admin.students', navigate: true);
 
 
 
@@ -115,6 +116,6 @@ session()->flash('success', 'شاگرد جدید با موفقیت اضافه ش
 
     public function render()
     {
-        return view('livewire.admin.create-students');
+        return view('livewire.admin.student.create-students');
     }
 }

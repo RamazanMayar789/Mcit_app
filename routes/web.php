@@ -1,6 +1,7 @@
 <?php
 
-use App\Livewire\Admin\Student;
+use App\Livewire\Admin\Course\Index;
+use App\Livewire\Admin\student\Student;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -26,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/student/card-generate/{id}/{format}', function ($id, $format) {
         return (new Student())->generateImage($id, $format);
     })->name('student.card.generate');
+    Route::get('/course',Index::class)->name('course.index');
     Route::redirect('settings', 'settings/profile');
 
     Route::get('settings/profile', Profile::class)->name('settings.profile');

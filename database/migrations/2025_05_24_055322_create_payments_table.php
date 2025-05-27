@@ -22,7 +22,7 @@ return new class extends Migration {
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->enum('installment_type', ['first', 'second']);
-           
+            $table->integer('amount');
             $table->enum('method', ['cash', 'bank_transfer']);
             $table->string('bank_receipt')->nullable();
             $table->boolean('is_verified')->default(false);

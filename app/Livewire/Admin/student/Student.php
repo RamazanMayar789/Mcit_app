@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Admin\student;
 
 use Flux\Flux;
 use Illuminate\Support\Facades\Storage;
@@ -28,7 +28,7 @@ class Student extends Component
 
         $students=\App\Models\student::orderBy('created_at','desc')->with('users')
         ->paginate(5);
-        return view('livewire.admin.student',[
+        return view('livewire.admin.student.student',[
             'students'=>$students,
 
         ]);
@@ -93,7 +93,7 @@ class Student extends Component
         $student->imageBase64 = $this->base64Image(public_path('storage/students/' . $student->image));
         $logoLeft = $this->base64Image(public_path('MCIT.jpg'));
         $logoRight = $this->base64Image(public_path('IMART.jpg'));
-        $html = view('livewire.admin.student-card', compact('student', 'logoLeft', 'logoRight'))->render();
+        $html = view('livewire.admin.student.student-card', compact('student', 'logoLeft', 'logoRight'))->render();
 
         $validFormats = ['png', 'jpg', 'webp'];
 

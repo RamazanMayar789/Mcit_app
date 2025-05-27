@@ -28,6 +28,12 @@
                             <span>{{ __('شاگردان') }}</span>
                         </div>
                     </flux:navlist.item>
+                    <flux:navlist.item :href="route('course.index')" :current="request()->routeIs('course.index')" wire:navigate>
+                        <div class="flex items-center gap-2">
+                            <flux:icon name="book-open-text" class="w-5 h-5 text-pink-600 dark:text-pink-300" />
+                            <span>{{ __('کورس') }}</span>
+                        </div>
+                    </flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

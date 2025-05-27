@@ -37,7 +37,7 @@ class Login extends Component
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => __('auth.failed'),
+                'email' => __('ایمیل یا پسورد اشتباه است لطفا دوباره کوشش نماید'),
             ]);
         }
 
